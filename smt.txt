@@ -1,0 +1,16 @@
+	//await RabbitSender("test", { hi: " my name is mohammad" });
+	// AdvancedRabbitReceiver(queue, (x: any) => {
+	// 	return "customReply";
+	// });
+
+
+	//await RabbitSender("test", { hi: " my name is mohammad" });
+const queue = "test_advanced";
+const data = { message: "Hello, receiver!" };
+
+server.get("/", async function (req: any, res: any) {
+	const a = await AdvancedRabbitSender(queue, data);
+	res.send({
+		dataIs: a,
+	});
+});
